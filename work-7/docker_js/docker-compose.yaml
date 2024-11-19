@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  server:
+    build: ./server
+    command: node server.js
+    ports:
+      - "1234:1234"
+
+  client:
+    build: ./client
+    command: node client.js
+    network_mode: host
+    depends_on:
+      - server

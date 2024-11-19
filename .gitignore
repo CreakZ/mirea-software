@@ -1,0 +1,6 @@
+# pdf-рендеры
+*.pdf
+
+# папки docs и tmp
+tmp
+docs
