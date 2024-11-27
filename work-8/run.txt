@@ -1,0 +1,23 @@
+# Jenkins
+
+docker build -t python_project .
+docker run -d -p 5000:5000 python_project
+
+# Maven
+
+docker build -t go_mock_server .
+docker run -p 8080:8080 go_mock_server
+
+# Drupal
+
+docker compose up -d
+
+# Couchbase
+
+docker build -t couchbase_app .
+docker run --rm --network="host" couchbase_app
+
+# Node.js
+
+docker build -t nodejs_project .
+docker run -p 3000:3000 --rm nodejs_project

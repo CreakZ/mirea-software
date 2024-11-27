@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repository') {
+            steps {
+                echo 'Cloning repository...'
+                git branch: 'main', url: 'https://github.com/your-username/python_project.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing Python dependencies...'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Run Script') {
+            steps {
+                echo 'Running Python script...'
+                sh 'python script.py > output.json'
+            }
+        }
+        stage('Publish Results') {
+            steps {
+                echo 'Publishing results...'
+                archiveArtifacts artifacts: 'output.json', fingerprint: true
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Build was successful. JSON result is available.'
+        }
+        failure {
+            echo 'Build failed. Check logs for details.'
+        }
+    }
+}
