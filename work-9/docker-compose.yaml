@@ -1,0 +1,21 @@
+services:
+  go:
+    container_name: pr-9-go
+    build: ./cont-1/
+    ports:
+      - "8080:8080"
+    networks:
+      - gateway-networks
+
+  rust:
+    container_name: pr-9-rust
+    build: ./cont-2/
+    ports:
+      - "8081:8081"
+    networks:
+      - gateway-networks
+
+
+networks:
+  gateway-networks:
+    driver: bridge

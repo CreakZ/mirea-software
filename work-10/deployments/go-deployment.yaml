@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pr-9-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pr-9-go
+  template:
+    metadata:
+      labels:
+        app: pr-9-go
+    spec:
+      containers:
+      - name: go
+        image: pr-9-go:latest
+        ports:
+        - containerPort: 8080
